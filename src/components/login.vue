@@ -23,7 +23,7 @@
             </el-form-item>
             <el-form-item style="margin-right: 120px;">
                 <el-button @click="$emit('type-login',loginForm)" type="primary" style="width: 100%;height: 52px;">登录</el-button>
-            </el-form-item>
+            </el-form-item>       
         </el-form>
     </div>
 </template>

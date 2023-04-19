@@ -20,8 +20,8 @@
             <div class="flex-grow" />
             <el-menu-item index="4">联系我们</el-menu-item>
             <el-menu-item index="3">更多版本</el-menu-item>
-            <el-menu-item index="2">登录</el-menu-item>
-            <el-menu-item index="1">注册</el-menu-item>
+            <el-menu-item index="2" >登录</el-menu-item>
+            <el-menu-item index="1" >注册</el-menu-item>
           </el-menu>
       </el-header>
       <el-main>
@@ -39,25 +39,21 @@
     <el-dialog
             v-model="dialogVisible2"
             v-if="dialogVisible2"
-            :title="activeIndex == 4 ? '联系我们' :'更多版本'"
+            :title="activeIndex == 4 ? '联系我们' :'版本'"
             width="400px"
     >
       <div v-if="activeIndex == 4">
         <p>
-          墨客（Moke）是上海舟可科技有限公司基于Azure OpenAI 开发的一款人工智能辅助软件。
+          墨客（Moke）是舟可科技有限公司基于Azure OpenAI 开发的一款智能辅助软件，
         </p>
         <p>
-          本項目目前在测试阶段，如果您有遇到任何问题或者任何建議，请联系 moke@zhouke.tech 商务合作请联系 sales@zhouke.tech
+          目前在测试阶段
+          有遇到任何问题，请联系 moke@zhouke.tech 商务合作请联系 sales@zhouke.tech
         </p>
       </div>
       <div v-else>
           <ul style="list-style: none;">
-          <p>
-            支持embedding训练模式的版本预计于4月24日发布。
-        </p>
-        <p>
-           GPT4.0接口因为较为昂贵，预计将在付费功能开发后启用。
-        </p>
+            <li>1. GPT 4 2. Fine Tuning</li>
           </ul>
       </div>
     </el-dialog>
@@ -80,7 +76,7 @@
 
 <script setup>
 // @ is an alias to /src
-import { ref } from 'vue'
+import { ref,computed } from 'vue'
 import MsgBox from './msgBox.vue'
 import Register from '@/components/register.vue'
 import LoginView from '@/components/login.vue'
@@ -91,6 +87,9 @@ const dialogVisible2 = ref(false);
 const isType = ref(null);
 import { ElMessage } from 'element-plus'
 import { registeredUsers } from '@/api/getNetwork'
+
+
+
 function goUser(val) {
   let text = {
     name:"用户名不能为空",
@@ -129,7 +128,8 @@ function handleSelect(key) {
       dialogVisible.value = true;
       break;
     case "2" :
-      if(token){
+     
+    if(token){
         ElMessage({
           message: '已登录，无需再次登录',
           type: 'warning',
@@ -154,9 +154,17 @@ function loginGo(val) { //登录
         type: 'success',
       })
       isType.value = res.data;
-      sessionStorage.setItem('tokenId',res.data);
+      sessionStorage.setItem('tokenId',res.data.token);
+      sessionStorage.setItem('userName',res.data.userName);
       dialogVisible.value = false;
     }
   })
 }
+
+
 </script>
+
+
+
+
+
