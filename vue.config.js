@@ -6,6 +6,7 @@ module.exports = defineConfig({
   assetsDir:"static",
   devServer: {
     port: 9527,
+    https: true,
     open: true,
     proxy: {
       '/api': {

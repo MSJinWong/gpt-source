@@ -39,21 +39,25 @@
     <el-dialog
             v-model="dialogVisible2"
             v-if="dialogVisible2"
-            :title="activeIndex == 4 ? '联系我们' :'版本'"
+            :title="activeIndex == 4 ? '联系我们' :'更多版本'"
             width="400px"
     >
       <div v-if="activeIndex == 4">
         <p>
-          墨客（Moke）是舟可科技有限公司基于Azure OpenAI 开发的一款智能辅助软件，
+          墨客（Moke）是上海舟可科技有限公司基于Azure OpenAI 开发的一款人工智能辅助软件。
         </p>
         <p>
-          目前在测试阶段
-          有遇到任何问题，请联系 moke@zhouke.tech 商务合作请联系 sales@zhouke.tech
+          本項目目前在测试阶段，如果您有遇到任何问题或者任何建議，请联系 moke@zhouke.tech 商务合作请联系 sales@zhouke.tech
         </p>
       </div>
       <div v-else>
           <ul style="list-style: none;">
-            <li>1. GPT 4 2. Fine Tuning</li>
+          <p>
+            支持embedding训练模式的版本预计于4月24日发布。
+        </p>
+        <p>
+           GPT4.0接口因为较为昂贵，预计将在付费功能开发后启用。
+        </p>
           </ul>
       </div>
     </el-dialog>
